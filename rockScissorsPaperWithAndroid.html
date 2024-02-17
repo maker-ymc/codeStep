@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위✌️바위✊보✋ with Android</title>
+    <style>
+        button {
+            background-color: #ccc;
+            width: 60px;
+            height: 30px;
+            margin-left: 100px;
+        }
+
+        img {
+            margin-top: 30px;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+    <script src="../../js_workspace/js/lib.js"></script>
+    <script>
+        let arr = [
+        "https://cdn.pixabay.com/photo/2014/03/25/15/26/rock-paper-scissors-296854_1280.png",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqPLc5jt6UWel1Vrpc_k8cuH8ox8thO0Jn6-La1LQRhkcHMO2CGfVEzOdP1JY5yhP3D9Q&usqp=CAU",
+        "https://cdn.pixabay.com/photo/2014/03/25/15/26/rock-paper-scissors-296855_1280.png"
+        ];
+
+        function showImg() {
+            document.getElementById("pic");
+            pic.src= arr[getRandom(arr.length-1)];
+
+        }
+
+        addEventListener("load", function () {
+            let bt = document.querySelector("button");  //버튼 이벤트 호출
+
+            bt.addEventListener("click", function () {
+                showImg()
+            });
+        });        
+    </script>
+
+</head>
+
+<body>
+    <button> 실행 </button>
+    <div>
+        <img src="https://www.publicdomainpictures.net/pictures/550000/nahled/wallpaper-with-android.png" id="pic">
+    </div>
+
+</body>
+
+</html>

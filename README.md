@@ -2,6 +2,6 @@
 
 The repository was created for management.
 Previous prictice materials have been added.
-- whatsong
+- GitTeamProject
 - MiniHomepage
 - WebHosting

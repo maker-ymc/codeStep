@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero animation</title> 
+</head>
+
+<body>
+    <button id="at">움직이기</button> <br>
+    <button id="st">멈추기</button> <br>
+    <img id="hero" src="../../js_workspace/images/hero/image1.png">
+</body>
+
+<script>
+    let count = 1;
+    const maxCount = 18;
+    let intervalId = 0;
+
+    function next() {
+        count = count % maxCount + 1;
+        let h = document.getElementById("hero");
+        h.src = "../../js_workspace/images/hero/image" + count + ".png";
+    }
+
+    document.getElementById("at").addEventListener("click", function(){
+        intervalId = setInterval(next, 50);
+    });
+
+    document.getElementById("st").addEventListener("click", function(){
+        clearInterval(intervalId);
+    });
+
+
+</script>
+
+</html>

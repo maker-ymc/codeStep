@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스탑워치 StopWatch 🕛</title>
+    <style>
+        #wrapper {
+            width: 1000px;
+            height: 300px;
+            background-color: beige;
+            margin: auto;
+            border-radius: 10%;
+        }
+
+        .box {
+            width: 130px;
+            height: 130px;
+            font-size: 50px;
+            text-align: right;
+            border-radius: 10%;
+        }
+
+        #content {
+            font-size: 40px;
+            text-align: center;
+            height: 200px;
+            background-color: chocolate;
+            line-height: 200px;
+        }
+
+        #footer {
+            line-height: 100px;
+            text-align: center;
+        }
+
+        #footer button {
+            width: 100px;
+            height: 50px;
+            border-radius: 10%;
+        }
+    </style>
+
+    <script>
+        let hh;
+        let mm;
+        let ss;
+        hr = 0;
+        min = 0;
+        sec = 0;
+        let flag = false;
+
+        function setCount() {
+            if (flag) {
+                // count seconds
+                sec++;
+                ss.value = sec;
+            }
+
+            if (sec >= 60) {
+                // count minutes, and set counter to 0 second
+                sec = 0;
+                min++;
+                mm.value = min;
+            }
+            if (min >= 60) {
+                // count minutes, and set counter to 0 second
+                min = 0;
+                hr++;
+                hh.value = min;
+            }
+        }
+
+        function startEvent() {     // flip point (active)
+            flag = true;
+        }
+
+        function stopEvent() {      // flip point (stop)
+            flag = false;
+        }
+
+        function resetEvent() {
+            hh.value = 0;
+            mm.value = 0;
+            ss.value = 0;
+            hr = 0;
+            min = 0;
+            sec = 0;
+        }
+
+
+
+        function init() {
+            hh = document.getElementById("hh")
+            mm = document.getElementById("mm")
+            ss = document.getElementById("ss")
+
+            hh.value = 0;
+            mm.value = 0;
+            ss.value = 0;
+
+            document.getElementById("start").addEventListener("click", startEvent);
+            document.getElementById("stop").addEventListener("click", stopEvent);
+            document.getElementById("reset").addEventListener("click", resetEvent);
+
+            setInterval("setCount()", 1000);
+
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="content">
+            <input type="text" class="box" id="hh">시
+            <input type="text" class="box" id="mm">분
+            <input type="text" class="box" id="ss">초
+        </div>
+        <div id="footer">
+            <button id="start">시작</button>
+            <button id="stop">정지</button>
+            <button id="reset">초기화</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

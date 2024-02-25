@@ -2,8 +2,9 @@
 
 <details>
  <summary> 2024년 2월 </summary>
-    The repository was created for management.  
-    Previous materials have been added.  
+    The repository was created for management. Previous materials have been added.
+    
+    
     - GitTeamProject, MiniHomepage, WebHosting  
     
 

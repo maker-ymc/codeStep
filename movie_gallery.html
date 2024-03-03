@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is your best marvel movie?</title>
+    <style>
+        #wrapper {
+            width: 1000px;
+            height: 800px;
+            background-color: lightgray;
+            margin: auto;
+        }
+
+        #header {
+            width: 100%;
+            height: 100px;
+            background-color: gray;
+            line-height: 100px;
+            text-align: center;
+            font-size: 52px;
+            font-weight: bold;
+        }
+
+        #section {
+            width: 100%;
+            height: 600px;
+            background-color: #ccc;
+        }
+
+        #aside {
+            width: 600px;
+            height: 100%;
+            background-color: silver;
+            float: left;
+            position: relative;
+        }
+
+        #pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        #content {
+            width: 400px;
+            height: 100%;
+            font-size: 16px;
+            background-color: beige;
+            float: left;
+        }
+
+        #footer {
+            width: 100%;
+            height: 120px;
+            background-color: bisque;
+            position: relative;
+            line-height: 100px;
+            overflow: scroll;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./data.js"></script>
+    <script src="./Photo.js"></script>
+    <script>
+        let header, aside, content, footer, box;
+        let a = 0.1 // motion speed
+        let targetX = 0;
+        let thumbArray = [];
+
+        function createThumb() {
+            const imgCount = movie.marvel.length;
+            const width=100;
+            $(box).css({
+                "position":"absolute", "left":"0px","top":"0px",
+                "width": `${imgCount*width}px`, "height": "100px"           
+                });
+                for(let i=0; i<movie.marvel.length; i++){
+                    let url = movie.marvel[i].url;
+                    // photo sources -> container, src, x, y, width, height
+                    let photo = new Photo(box, url, i*100, 0, 100, 100);
+                    thumbArray.push(photo);
+                }
+            }
+
+        function showPage(x) {
+            targetX = x;
+        }
+
+        function pageMove() {
+            let posX = parseFloat($(box).css("left")) + a*(targetX - parseFloat($(box).css("left")));
+            $(box).css("left", posX + "px");
+        }
+
+        function showPage(x) {
+            targetX = x;
+        }
+
+        function gameLoop() {
+            pageMove(); // soft animation
+        }
+
+        // Using jquery
+        $(function () {
+            header = document.getElementById("header");
+            aside = document.getElementById("aside");
+            content = document.getElementById("content");
+            footer = document.getElementById("footer");
+            box = document.getElementById("box");
+            
+            createThumb();
+
+            //키보드 이벤트 연결
+            $(document).keydown(function(e){
+                console.log("action!");
+                
+                switch(e.keyCode){
+                    case 37:showPage(0);break;   // 이전 페이지
+                    case 39:showPage(-1000);break;   // 다음 페이지
+                }
+            });
+            setInterval("gameLoop()", 10);
+        });
+
+
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">마블의 영화들</div>
+        <div id="section">
+            <div id="aside">
+                <img id="pic">
+            </div>
+            <div id="content"></div>
+        </div>
+        <div id="footer">
+            <div id="box"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

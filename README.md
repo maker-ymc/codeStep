@@ -9,7 +9,9 @@
     
 
     ⌨️ monthly coding
-    - rockScissorsPaperWithAndroid  
-    - hero_animation  
-    - stopwatch  
+    - rockScissorsPaperWithAndroid.html
+    - hero_animation.html
+    - stopwatch.html
+    - calendar.html
+    - movie_gallery.html
 </details>
